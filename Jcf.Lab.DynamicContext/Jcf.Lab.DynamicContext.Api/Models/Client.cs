@@ -11,5 +11,13 @@ namespace Jcf.Lab.DynamicContext.Api.Models
         [Required]
         [StringLength(50)]
         public string ClientSetting { get; private set; }
+
+        public Client(string name, string clientSetting):base()
+        {
+            Name = name;
+            ClientSetting = clientSetting;
+        }
+
+        private Client() { }
     }
 }

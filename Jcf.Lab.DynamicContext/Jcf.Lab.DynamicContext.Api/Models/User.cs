@@ -22,7 +22,7 @@ namespace Jcf.Lab.DynamicContext.Api.Models
 
         public Client? Client { get; private set; }
 
-        public User(string name, string email, string senha, string role, Guid? clientId):base()
+        public User(string name, string email, string senha, string role, Guid? clientId) : base()
         {
             Name = name;
             Email = email;
@@ -30,5 +30,7 @@ namespace Jcf.Lab.DynamicContext.Api.Models
             Role = role;
             ClientId = clientId;
         }
+
+        private User() { }
     }
 }
