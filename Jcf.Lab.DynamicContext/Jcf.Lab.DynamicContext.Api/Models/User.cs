@@ -37,5 +37,10 @@ namespace Jcf.Lab.DynamicContext.Api.Models
         {
             Password = password;
         }
+
+        public void SetRole(string role)
+        {
+            Role = role;
+        }
     }
 }

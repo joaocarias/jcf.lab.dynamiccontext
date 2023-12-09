@@ -68,13 +68,14 @@ namespace Jcf.Lab.DynamicContext.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Novo([FromBody] CreateUser create)
+        public async Task<IActionResult> Create([FromBody] CreateUser create)
         {
             var apiResponse = new ApiResponse();
             try
             {
                 var user = _mapper.Map<User>(create);
                 user.SetPassword(PasswordUtil.CreateHashMD5(create.Password));
+                if (create.ClientId is null) user.SetRole("ADMIN");
 
                 await _userRepository.CreateAsync(user);
                 var userResponseDTO = _mapper.Map<UserResponseDTO>(user);

@@ -5,6 +5,7 @@ namespace Jcf.Lab.DynamicContext.Api.Models.Records.User
     public record CreateUser(
         string Name,    
         string Email,
-        string Password 
-        );
+        string Password,
+        Guid? ClientId
+    );
  }
