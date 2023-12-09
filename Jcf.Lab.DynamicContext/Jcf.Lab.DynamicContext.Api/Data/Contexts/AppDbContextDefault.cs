@@ -7,8 +7,8 @@ namespace Jcf.Lab.DynamicContext.Api.Data.Contexts
     {
         public AppDbContextDefault(DbContextOptions<AppDbContextDefault> options) : base(options) { }
 
-        DbSet<User> Users { get; set; }
-        DbSet<Client> Clients { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
