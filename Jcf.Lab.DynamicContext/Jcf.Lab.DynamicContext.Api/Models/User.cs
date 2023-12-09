@@ -14,7 +14,7 @@ namespace Jcf.Lab.DynamicContext.Api.Models
 
         [Required]
         [StringLength(255)]
-        public string Senha { get; private set; }
+        public string Password { get; private set; }
 
         public string Role { get; private set; } = "CLIENT";
 
@@ -22,15 +22,20 @@ namespace Jcf.Lab.DynamicContext.Api.Models
 
         public Client? Client { get; private set; }
 
-        public User(string name, string email, string senha, string role, Guid? clientId) : base()
+        public User(string name, string email, string password, string role, Guid? clientId) : base()
         {
             Name = name;
             Email = email;
-            Senha = senha;
+            Password = password;
             Role = role;
             ClientId = clientId;
         }
 
         private User() { }
+    
+        public void SetPassword(string password)
+        {
+            Password = password;
+        }
     }
 }

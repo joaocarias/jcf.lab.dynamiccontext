@@ -1,4 +1,7 @@
+using Jcf.Lab.DynamicContext.Api.Config;
 using Jcf.Lab.DynamicContext.Api.Data.Contexts;
+using Jcf.Lab.DynamicContext.Api.Data.Repositories;
+using Jcf.Lab.DynamicContext.Api.Data.Repositories.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +17,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 var app = builder.Build();
 
