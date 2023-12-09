@@ -1,0 +1,6 @@
+@Jcf.Lab.DynamicContext.Api_HostAddress = http://localhost:5133
+
+GET {{Jcf.Lab.DynamicContext.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
