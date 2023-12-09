@@ -73,10 +73,7 @@ namespace Jcf.Lab.DynamicContext.Api.Controllers
             var apiResponse = new ApiResponse();
             try
             {
-                var user = _mapper.Map<User>(create);
-                user.SetPassword(PasswordUtil.CreateHashMD5(create.Password));
-                if (create.ClientId is null) user.SetRole("ADMIN");
-
+                var user = new User(create.Name, create.Email, create.Password, create.ClientId);                
                 await _userRepository.CreateAsync(user);
                 var userResponseDTO = _mapper.Map<UserResponseDTO>(user);
                 apiResponse.Result = userResponseDTO;

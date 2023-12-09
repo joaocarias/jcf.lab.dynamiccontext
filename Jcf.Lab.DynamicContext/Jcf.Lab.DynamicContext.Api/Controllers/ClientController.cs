@@ -70,8 +70,7 @@ namespace Jcf.Lab.DynamicContext.Api.Controllers
             var apiResponse = new ApiResponse();
             try
             {
-                var client = _mapper.Map<Client>(create);
-              
+                var client = new Client(create.Name, create.ConnectionString);              
                 await _clientRepository.CreateAsync(client);
                 var clientResponseDTO = _mapper.Map<ClientResponseDTO>(client);
                 apiResponse.Result = clientResponseDTO;

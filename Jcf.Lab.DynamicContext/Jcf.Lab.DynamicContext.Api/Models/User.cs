@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Jcf.Lab.DynamicContext.Api.Utils;
+using Microsoft.AspNetCore.Http.HttpResults;
+using System.ComponentModel.DataAnnotations;
 
 namespace Jcf.Lab.DynamicContext.Api.Models
 {
@@ -21,13 +23,13 @@ namespace Jcf.Lab.DynamicContext.Api.Models
         public Guid? ClientId { get; private set; }
 
         public Client? Client { get; private set; }
-
-        public User(string name, string email, string password, string role, Guid? clientId) : base()
+              
+        public User(string name, string email, string password, Guid? clientId) : base()
         {
             Name = name;
             Email = email;
-            Password = password;
-            Role = role;
+            Password = PasswordUtil.CreateHashMD5(password);
+            Role = clientId is null ? "ADMIN" : "CLIENT";
             ClientId = clientId;
         }
 

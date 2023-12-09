@@ -1,6 +1,4 @@
 ﻿namespace Jcf.Lab.DynamicContext.Api.Models.Records.Client
 {
-    public class CreateClient
-    {
-    }
+    public record CreateClient (string Name, string ConnectionString);
 }
