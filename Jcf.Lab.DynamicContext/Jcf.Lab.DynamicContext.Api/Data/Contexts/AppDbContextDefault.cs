@@ -12,7 +12,7 @@ namespace Jcf.Lab.DynamicContext.Api.Data.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-        }    
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

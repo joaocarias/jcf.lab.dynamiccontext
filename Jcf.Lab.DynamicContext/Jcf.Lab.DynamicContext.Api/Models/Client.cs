@@ -2,7 +2,7 @@
 
 namespace Jcf.Lab.DynamicContext.Api.Models
 {
-    public class Client
+    public class Client : EntityBase
     {
         [Required]
         [StringLength(255)]
