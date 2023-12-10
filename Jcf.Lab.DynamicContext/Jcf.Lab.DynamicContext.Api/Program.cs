@@ -21,9 +21,13 @@ var connectionStringDefault = builder.Configuration.GetConnectionString("Default
 builder.Services.AddDbContext<AppDbContextDefault>(options =>
                         options.UseMySql(connectionStringDefault, ServerVersion.AutoDetect(connectionStringDefault)));
 
-builder.Services.AddDbContext<DbDynamicContext>(options =>
-                        options.UseMySql(connectionStringDefault, ServerVersion.AutoDetect(connectionStringDefault)));
-builder.Services.AddScoped<DbDynamicContextFactory>();
+//builder.Services.AddDbContext<DbDynamicContext>(options =>
+//                        options.UseMySql(connectionStringDefault, ServerVersion.AutoDetect(connectionStringDefault)));
+//builder.Services.AddScoped<DbDynamicContextFactory>();
+
+builder.Services.AddScoped<AppDbDapperDynamicContext>();
+
+
 
 builder.Services.AddControllers().AddNewtonsoftJson(x =>
     x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

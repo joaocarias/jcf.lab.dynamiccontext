@@ -45,7 +45,7 @@ namespace Jcf.Lab.DynamicContext.Api.Controllers
                 }
 
                 var list = await _reportRepository.GetReports(user?.Client?.ConnectionString);
-                if(list != null) 
+                if(list == null) 
                 {
                     apiResponse.Error(["Não foi possível obter relatório"], HttpStatusCode.BadRequest);
                     return BadRequest(apiResponse);
