@@ -47,7 +47,7 @@ namespace Jcf.Lab.DynamicContext.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                apiResponse.Error(new List<string> { ex.Message });
+                apiResponse.Error([ex.Message]);
                 return BadRequest(apiResponse);
             }
         }

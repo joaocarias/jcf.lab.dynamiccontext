@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Jcf.Lab.DynamicContext.Api.Models;
 using Jcf.Lab.DynamicContext.Api.Models.DTOs.Client;
+using Jcf.Lab.DynamicContext.Api.Models.DTOs.Report;
 using Jcf.Lab.DynamicContext.Api.Models.DTOs.User;
 
 namespace Jcf.Lab.DynamicContext.Api.Config
@@ -12,6 +13,8 @@ namespace Jcf.Lab.DynamicContext.Api.Config
             CreateMap<UserResponseDTO, User>().ReverseMap();
 
             CreateMap<ClientResponseDTO, Client>().ReverseMap();
+
+            CreateMap<ReportResponseDTO, Report>().ReverseMap();    
         }
     }
 }

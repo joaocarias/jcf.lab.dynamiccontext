@@ -9,9 +9,14 @@ namespace Jcf.Lab.DynamicContext.Api.Data.Contexts
 
         public DbSet<Report> Reports { get; set; }
 
-        public DbDynamicContext(string connectionString)
+        public DbDynamicContext(DbContextOptions<DbDynamicContext> options, string connectionString):base(options)
         {
             _connectionString = connectionString;
+        }
+
+        public DbDynamicContext(DbContextOptions<DbDynamicContext> options) : base(options)
+        {
+           
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
