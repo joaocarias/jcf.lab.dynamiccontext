@@ -2,7 +2,7 @@
 
 namespace Jcf.Lab.DynamicContext.Api.Data.Repositories.IRepositories
 {
-    public interface IUserRepository : IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<User>, IAuthenticateRepositoryBase<User>
     {
     }
 }

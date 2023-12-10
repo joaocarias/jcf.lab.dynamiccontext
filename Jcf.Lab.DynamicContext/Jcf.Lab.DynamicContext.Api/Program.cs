@@ -2,6 +2,8 @@ using Jcf.Lab.DynamicContext.Api.Config;
 using Jcf.Lab.DynamicContext.Api.Data.Contexts;
 using Jcf.Lab.DynamicContext.Api.Data.Repositories;
 using Jcf.Lab.DynamicContext.Api.Data.Repositories.IRepositories;
+using Jcf.Lab.DynamicContext.Api.Services;
+using Jcf.Lab.DynamicContext.Api.Services.IServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 Console.WriteLine(builder.Configuration.GetSection("EnvironmentName").Value);
 // Add services to the container.
+
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var connectionStringDefault = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContextDefault>(options =>

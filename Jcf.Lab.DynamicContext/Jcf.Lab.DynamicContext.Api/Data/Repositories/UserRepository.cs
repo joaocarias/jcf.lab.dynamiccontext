@@ -2,6 +2,7 @@
 using Jcf.Lab.DynamicContext.Api.Data.Repositories.IRepositories;
 using Jcf.Lab.DynamicContext.Api.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Jcf.Lab.DynamicContext.Api.Data.Repositories
 {
@@ -14,6 +15,22 @@ namespace Jcf.Lab.DynamicContext.Api.Data.Repositories
         {
             _logger = logger;
             _appDbContextDefault = appDbContextDefault;
+        }
+
+        public async Task<User?> AuthenticateAsync(string username, string password)
+        {
+            try
+            {
+                return await _appDbContextDefault.Users
+                                 .AsNoTracking()
+                                 .SingleOrDefaultAsync(_ =>
+                                     _.IsActivo && _.Email.Equals(username) && _.Password.Equals(password));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return null;
+            }
         }
 
         public async Task<User?> CreateAsync(User entity)
@@ -66,6 +83,22 @@ namespace Jcf.Lab.DynamicContext.Api.Data.Repositories
             {
                 _logger.LogError(ex.Message);
                 return null;
+            }
+        }
+
+        public async Task<bool> UserNameInUseAsync(string username)
+        {
+            try
+            {
+                return await _appDbContextDefault.Users
+                                 .AsNoTracking()
+                                 .Where(_ => _.IsActivo && _.Email.ToLower().Equals(username.ToLower()))
+                                 .AnyAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return false;
             }
         }
     }

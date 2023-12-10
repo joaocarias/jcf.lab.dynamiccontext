@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Jcf.Lab.DynamicContext.Api.Models
 {
-    public class EntityBase
+    public abstract class EntityBase
     {
         public EntityBase()
         {
