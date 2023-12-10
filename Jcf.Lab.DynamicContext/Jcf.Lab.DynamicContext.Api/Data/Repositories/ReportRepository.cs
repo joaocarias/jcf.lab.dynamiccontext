@@ -15,7 +15,7 @@ namespace Jcf.Lab.DynamicContext.Api.Data.Repositories
             _logger = logger;            
         }
 
-        public async Task<IEnumerable<Report>> GetReports(string connectionString)
+        public async Task<IEnumerable<Report>> GetReportsAsync(string connectionString)
         {
             try
             {
